@@ -1,14 +1,10 @@
-import { forwardRef } from "react";
 import { Container } from "./styles";
 
-function Input({ label, id, error = null, ...rest }, ref) {
+export function InputLabel({ label, id, register, name, ...rest }) {
   return (
-    <Container isRed>
-      <label htmlFor={id}>{label}</label>
-      <input id={id} ref={ref} {...rest} />
-      {!!error && <span>{error.message}</span>}
+    <Container>
+      <label htmlFor={name}>{label}</label>
+      <input autoComplete="off" id={name} {...register(name)} {...rest} />
     </Container>
   );
 }
-
-export const InputLabel = forwardRef(Input);

@@ -15,7 +15,7 @@ export default createGlobalStyle`
     height: 100vh;
     background: ${({ theme }) => theme.COLORS.BACKGROUND_900};
     
-    *{
+    *:not(.Toastify *){
       font-size: 1.6rem;
       font-weight:400;
       font-family: ${({ theme }) => theme.FONTS.PRIMARY};
@@ -23,7 +23,7 @@ export default createGlobalStyle`
       text-decoration: none;
       list-style: none;
     }
-
+    
     button{
       cursor: pointer;
       &:hover{

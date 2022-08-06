@@ -3,50 +3,75 @@ import { Button } from "../../components/Button";
 import { InputLabel } from "../../components/InputLabel";
 import { Container } from "./styles";
 import { useForm } from "react-hook-form";
-import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
+import { login } from "../../utils/validations";
+import { toast } from "react-toastify";
 
 export function ClientLogin() {
-  let schema = yup.object().shape({
-    password: yup.string().min(6, "No mínimo 6 caracteres")
-  });
-
   const {
     register,
     handleSubmit,
     formState: { errors }
-  } = useForm({ resolver: yupResolver(schema) });
+  } = useForm({
+    resolver: yupResolver(login)
+  });
 
-  function teste(values) {
-    console.log(values);
+  function handleLogin(data) {
+    console.log(data);
+  }
+
+  function handleErrors() {
+    const toastConfig = {
+      position: "top-right",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "light"
+    };
+    if (errors.name) {
+      toast.error(errors.name.message, toastConfig);
+    }
+    if (errors.email) {
+      toast.error(errors.email.message, toastConfig);
+    }
+
+    if (errors.password) {
+      toast.error(errors.password.message, toastConfig);
+    }
   }
 
   return (
     <Container>
       <img src={logo} alt="" />
 
-      <form onSubmit={handleSubmit(teste)}>
+      <form onSubmit={handleSubmit(handleLogin)}>
         <h1> Crie sua conta</h1>
 
         <InputLabel
           label="Seu nome"
           placeholder="Exemplo: Maria da Silva"
-          {...register("name")}
+          name="name"
+          register={register}
         />
+
         <InputLabel
           label="Email"
+          name="email"
           placeholder="Exemplo: exemplo@exemplo.com.br"
-          {...register("email")}
+          register={register}
         />
         <InputLabel
           label="Senha"
+          name="password"
           placeholder="No mínimo 6 caracteres"
           type="password"
-          error={errors.password}
-          {...register("password")}
+          register={register}
         />
 
-        <Button name="Criar conta" type="submit" />
+        <Button name="Criar conta" type="submit" onClick={handleErrors} />
 
         <a href="#">Já tenho uma conta</a>
       </form>

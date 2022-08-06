@@ -12,4 +12,8 @@ export const Container = styled.div`
     border: 1px solid ${({ theme }) => theme.COLORS.WHITE};
     border-radius: 0.5rem;
   }
+
+  > span {
+    color: ${({ theme }) => theme.COLORS.RED900};
+  }
 `;
