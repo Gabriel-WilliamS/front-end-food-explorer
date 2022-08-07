@@ -1,13 +1,14 @@
 import logo from "../../assets/logo.svg";
-import { Button } from "../../components/Button";
-import { InputLabel } from "../../components/InputLabel";
+import { Button, InputLabel } from "../../components";
 import { Container } from "./styles";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { login } from "../../utils/validations";
-import { toast } from "react-toastify";
+import { useNavigate } from "react-router-dom";
 
-export function ClientLogin() {
+export function AdminRegister() {
+  const navigate = useNavigate();
+
   const {
     register,
     handleSubmit,
@@ -20,27 +21,8 @@ export function ClientLogin() {
     console.log(data);
   }
 
-  function handleErrors() {
-    const toastConfig = {
-      position: "top-right",
-      autoClose: 5000,
-      hideProgressBar: false,
-      closeOnClick: true,
-      pauseOnHover: true,
-      draggable: true,
-      progress: undefined,
-      theme: "light"
-    };
-    if (errors.name) {
-      toast.error(errors.name.message, toastConfig);
-    }
-    if (errors.email) {
-      toast.error(errors.email.message, toastConfig);
-    }
-
-    if (errors.password) {
-      toast.error(errors.password.message, toastConfig);
-    }
+  function handleNavigate() {
+    navigate(-1);
   }
 
   return (
@@ -48,13 +30,14 @@ export function ClientLogin() {
       <img src={logo} alt="" />
 
       <form onSubmit={handleSubmit(handleLogin)}>
-        <h1> Crie sua conta</h1>
+        <h1>Crie sua conta Admin</h1>
 
         <InputLabel
           label="Seu nome"
           placeholder="Exemplo: Maria da Silva"
           name="name"
           register={register}
+          error={errors.name}
         />
 
         <InputLabel
@@ -62,6 +45,7 @@ export function ClientLogin() {
           name="email"
           placeholder="Exemplo: exemplo@exemplo.com.br"
           register={register}
+          error={errors.email}
         />
         <InputLabel
           label="Senha"
@@ -69,11 +53,12 @@ export function ClientLogin() {
           placeholder="No mínimo 6 caracteres"
           type="password"
           register={register}
+          error={errors.password}
         />
 
-        <Button name="Criar conta" type="submit" onClick={handleErrors} />
+        <Button name="Criar conta" type="submit" />
 
-        <a href="#">Já tenho uma conta</a>
+        <a onClick={handleNavigate}>Já tenho uma conta</a>
       </form>
     </Container>
   );

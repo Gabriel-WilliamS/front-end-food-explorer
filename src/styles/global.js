@@ -30,9 +30,33 @@ export default createGlobalStyle`
         filter: opacity(0.8);
       }
     }
+
+    a{
+      cursor: pointer;
+    }
   }
 
+  @keyframes bottomToTop {
+  from {
+    transform: translateY(100px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0px);
+    opacity: 1;
+  }
+}
 
+@keyframes rightToLeft {
+  from {
+    transform: translateX(100px);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0px);
+    opacity: 1;
+  }
+}
  
   
 

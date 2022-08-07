@@ -8,6 +8,7 @@ export const Container = styled.div`
   justify-content: space-around;
   align-items: center;
   padding: 0 1.6rem;
+  overflow: hidden;
 
   > img {
     width: 22.5rem;
@@ -22,7 +23,8 @@ export const Container = styled.div`
     flex-direction: column;
     border-radius: 1.6rem;
     justify-content: space-between;
-    padding: 1.6rem;
+    padding: 3rem 1.6rem;
+    animation: rightToLeft 1s;
 
     input {
       &::placeholder {
