@@ -5,7 +5,7 @@ export const Container = styled.div`
   height: 100vh;
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
+  justify-content: space-evenly;
   align-items: center;
   padding: 0 1.6rem;
   overflow: hidden;
@@ -35,7 +35,7 @@ export const Container = styled.div`
     > h1 {
       text-align: center;
       font-family: ${({ theme }) => theme.FONTS.SECONDY};
-      font-size: 3.2rem;
+      font-size: 2.2rem;
     }
 
     > a {
@@ -62,6 +62,10 @@ export const Container = styled.div`
         &::placeholder {
           font-size: 1.6rem;
         }
+      }
+
+      > h1 {
+        font-size: 2.5rem;
       }
     }
   }
