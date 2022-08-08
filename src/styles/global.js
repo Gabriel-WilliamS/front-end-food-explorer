@@ -9,6 +9,23 @@ export default createGlobalStyle`
   
   :root{
     font-size:62.5%;
+
+    @media(max-width:1200px){
+      font-size: 56.25%;
+    }
+
+    @media(max-width:1080px){
+      font-size: 50%;
+    }
+
+    @media(max-width: 900px){
+      font-size: 43.75%;
+    }
+
+     @media(max-width: 790px){
+      font-size: 37.5%;
+    }
+    
   }
 
   body{
@@ -18,7 +35,7 @@ export default createGlobalStyle`
     *:not(.Toastify *){
       font-size: 1.6rem;
       font-weight:400;
-      font-family: ${({ theme }) => theme.FONTS.PRIMARY};
+      font-family: ${({ theme }) => theme.FONTS.SECONDY};
       color: ${({ theme }) => theme.COLORS.WHITE};
       text-decoration: none;
       list-style: none;
@@ -38,22 +55,22 @@ export default createGlobalStyle`
 
   @keyframes bottomToTop {
   from {
-    transform: translateY(100px);
+    transform: translateY(10rem);
     opacity: 0;
   }
   to {
-    transform: translateY(0px);
+    transform: translateY(0rem);
     opacity: 1;
   }
 }
 
 @keyframes rightToLeft {
   from {
-    transform: translateX(100px);
+    transform: translateX(10rem);
     opacity: 0;
   }
   to {
-    transform: translateX(0px);
+    transform: translateX(0rem);
     opacity: 1;
   }
 }

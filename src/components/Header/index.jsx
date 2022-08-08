@@ -18,18 +18,28 @@ export function Header() {
       <ContentWrapper>
         <img className="logo" src={logoImg} alt="Logo food explorer" />
 
-        <a href="">Meus favoritos</a>
-
-        <InputIcon image={search} placeholder="Busque pelas opções de pratos" />
-
-        <button>
-          <img src={receipt} alt="Receipt Icon" />
-          Meus pedidos
-        </button>
-
-        <a onClick={handleNavigate}>
-          <img src={signOut} alt="Botão de saida" />
-        </a>
+        <ul>
+          <li>
+            <a href="">Meus favoritos</a>
+          </li>
+          <li>
+            <InputIcon
+              image={search}
+              placeholder="Busque pelas opções de pratos"
+            />
+          </li>
+          <li>
+            <button>
+              <img src={receipt} alt="Receipt Icon" />
+              Meus pedidos
+            </button>
+          </li>
+          <li>
+            <a onClick={handleNavigate}>
+              <img src={signOut} alt="Botão de saida" />
+            </a>
+          </li>
+        </ul>
       </ContentWrapper>
     </Container>
   );
