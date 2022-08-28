@@ -1,39 +1,24 @@
 import styled from "styled-components";
 
-export const Container = styled.div`
-  height: 100vh;
-  display: grid;
-  grid-template-columns: auto 1fr;
-  grid-template-rows: 12.3rem auto;
-  grid-template-areas:
-    "header header"
-    "sidemenu content";
-`;
+export const Table = styled.table`
+  width: 100%;
+  border-spacing: 0 1rem;
 
-export const ContentWrapper = styled.main`
-  grid-area: content;
-  padding: 3rem;
+  th {
+    font-size: 1.4rem;
+    font-family: ${({ theme }) => theme.FONTS.PRIMARY};
+    font-weight: 700;
+    color: ${({ theme }) => theme.COLORS.GRAY700};
+    background-color: ${({ theme }) => theme.COLORS.BACKGROUND_700};
+    text-align: left;
+    padding: 1.6rem;
 
-  table {
-    width: 100%;
-    border-spacing: 0 1rem;
+    &:first-child {
+      border-radius: 0.8rem 0 0 0.8rem;
+    }
 
-    th {
-      font-size: 1.4rem;
-      font-family: ${({ theme }) => theme.FONTS.PRIMARY};
-      font-weight: 700;
-      color: ${({ theme }) => theme.COLORS.GRAY700};
-      background-color: ${({ theme }) => theme.COLORS.BACKGROUND_700};
-      text-align: left;
-      padding: 1.6rem;
-
-      &:first-child {
-        border-radius: 0.8rem 0 0 0.8rem;
-      }
-
-      &:last-child {
-        border-radius: 0 0.8rem 0.8rem 0;
-      }
+    &:last-child {
+      border-radius: 0 0.8rem 0.8rem 0;
     }
   }
 `;

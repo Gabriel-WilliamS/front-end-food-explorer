@@ -1,14 +1,7 @@
-import { useState } from "react";
-import {
-  Button,
-  HeaderAdmin,
-  SideMenu,
-  RowTableProducts
-} from "../../components";
-import { Container, ContentWrapper, TitlePage } from "./styles";
+import { Button, RowTableProducts, PageAdmin } from "../../components";
+import { Table, TitlePage } from "./styles";
 
 export function Products() {
-  const [menuOpen, setMenuOpen] = useState(false);
   const data = [
     {
       id: 1,
@@ -32,34 +25,30 @@ export function Products() {
     }
   ];
   return (
-    <Container>
-      <HeaderAdmin menuOpen={menuOpen} setMenuOpen={setMenuOpen} />
-      <SideMenu openMenu={menuOpen} className={menuOpen ? "menuOpen" : ""} />
-      <ContentWrapper>
-        <TitlePage>
-          <h1>Produtos cadastrados</h1> <Button name="Cadastrar produto" />{" "}
-        </TitlePage>
-        <table>
-          <thead>
-            <tr>
-              <th>ID</th>
-              <th>Produto</th>
-              <th>Preço</th>
-              <th>Ações</th>
-            </tr>
-          </thead>
-          <tbody>
-            {data &&
-              data.map((product) => (
-                <RowTableProducts
-                  id={product.id}
-                  product={product.name}
-                  price={product.price}
-                />
-              ))}
-          </tbody>
-        </table>
-      </ContentWrapper>
-    </Container>
+    <PageAdmin>
+      <TitlePage>
+        <h1>Produtos cadastrados</h1> <Button name="Cadastrar produto" />{" "}
+      </TitlePage>
+      <Table>
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Produto</th>
+            <th>Preço</th>
+            <th>Ações</th>
+          </tr>
+        </thead>
+        <tbody>
+          {data &&
+            data.map((product) => (
+              <RowTableProducts
+                id={product.id}
+                product={product.name}
+                price={product.price}
+              />
+            ))}
+        </tbody>
+      </Table>
+    </PageAdmin>
   );
 }
