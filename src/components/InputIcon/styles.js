@@ -1,7 +1,6 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
-  width: 41rem;
   height: 4.8rem;
   background-color: ${({ theme }) => theme.COLORS.BACKGROUND_700};
   display: flex;
@@ -20,5 +19,11 @@ export const Container = styled.div`
     height: 100%;
     background: transparent;
     border: none;
+
+    &:disabled {
+      &:hover {
+        cursor: no-drop;
+      }
+    }
   }
 `;

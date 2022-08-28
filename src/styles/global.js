@@ -9,7 +9,7 @@ export default createGlobalStyle`
   
   :root{
     font-size:62.5%;
-
+    
     @media(max-width:1200px){
       font-size: 56.25%;
     }
@@ -23,15 +23,20 @@ export default createGlobalStyle`
     }
 
      @media(max-width: 790px){
-      font-size: 37.5%;
+      font-size: 38.5%;
     }
-    
+
   }
 
-  body{
-    height: 100vh;
+  body{ 
     background: ${({ theme }) => theme.COLORS.BACKGROUND_900};
-    
+    #root{
+      width: 100vw;
+    height: 100vh;
+    overflow-x: hidden;
+
+    }
+ 
     *:not(.Toastify *){
       font-size: 1.6rem;
       font-weight:400;

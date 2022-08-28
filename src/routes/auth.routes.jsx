@@ -1,7 +1,5 @@
 import { Routes, Route } from "react-router-dom";
-import { AdminRegister } from "../pages/AdminRegister";
-import { ClientRegister } from "../pages/ClientRegister";
-import { Login } from "../pages/Login";
+import { AdminRegister, ClientRegister, Login } from "../pages";
 
 export function AuthRoutes() {
   return (

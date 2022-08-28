@@ -1,11 +1,14 @@
 import styled from "styled-components";
 
-export const Container = styled.div``;
+export const Container = styled.div`
+  position: relative;
+  padding-bottom: 22.3rem;
+`;
 
 export const ContentWrapper = styled.main`
   max-width: 112rem;
   margin: 0 auto;
-
+  padding-inline: 1.6rem;
   > .banner-content {
     width: 100%;
     height: 26rem;
@@ -35,6 +38,15 @@ export const ContentWrapper = styled.main`
 
       span {
         font-weight: 400;
+      }
+    }
+
+    @media (max-width: 790px) {
+      margin-top: 8rem;
+      img {
+        max-width: 56.1rem;
+        max-height: 29.9rem;
+        filter: brightness(0.5);
       }
     }
   }

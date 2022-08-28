@@ -1,4 +1,4 @@
-import logo from "../../assets/logo.svg";
+import logo from "../../assets/svg/logo.svg";
 import { Button, InputLabel } from "../../components";
 import { Container } from "./styles";
 import { useForm } from "react-hook-form";
@@ -8,7 +8,6 @@ import { useNavigate } from "react-router-dom";
 
 export function AdminRegister() {
   const navigate = useNavigate();
-
   const {
     register,
     handleSubmit,
