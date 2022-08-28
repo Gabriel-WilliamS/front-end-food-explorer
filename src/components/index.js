@@ -16,7 +16,7 @@ import { RowTableProducts } from "./RowTableProducts";
 import { SideMenu } from "./SideMenu";
 import { DashbordCard } from "./DashbordCard";
 import { PageAdmin } from "./PageAdmin";
-
+import { BackButton } from "./BackButton";
 export {
   Button,
   InputLabel,
@@ -35,5 +35,6 @@ export {
   HeaderAdmin,
   SideMenu,
   DashbordCard,
-  PageAdmin
+  PageAdmin,
+  BackButton
 };
