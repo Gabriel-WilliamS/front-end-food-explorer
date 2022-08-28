@@ -11,6 +11,8 @@ export default {
 
     BLUE: "#82F3FF",
 
+    ORANGE: "#ff8000",
+
     RED900: "#750310",
     RED800: "#92000E",
     RED700: "#AB4D55",

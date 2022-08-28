@@ -12,6 +12,7 @@ import { Ingredient } from "./Ingredient";
 import { Counter } from "./Counter";
 import { OrdersCard } from "./OrdersCard";
 import { RowTableOrderHistory } from "./RowTableOrderHistory";
+import { RowTableProducts } from "./RowTableProducts";
 import { SideMenu } from "./SideMenu";
 import { DashbordCard } from "./DashbordCard";
 export {
@@ -28,6 +29,7 @@ export {
   Counter,
   OrdersCard,
   RowTableOrderHistory,
+  RowTableProducts,
   HeaderAdmin,
   SideMenu,
   DashbordCard
