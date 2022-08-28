@@ -57,8 +57,8 @@ export const TitlePage = styled.div`
   align-items: center;
   justify-content: space-between;
   margin-bottom: 3rem;
-  h1 {
-    font-size: 3.2rem;
+  > h1 {
+    font-size: 3.2rem !important;
     font-weight: 500;
   }
   button {
