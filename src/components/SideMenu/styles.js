@@ -11,19 +11,6 @@ export const Container = styled.div`
 
   &.menuOpen {
     width: 24rem;
-
-    ul li {
-      gap: 1rem;
-      font-size: 1.8rem;
-      transition: all 0.5s;
-
-      svg {
-        font-size: 3rem;
-      }
-      &:hover {
-        background-color: ${({ theme }) => theme.COLORS.BACKGROUND_600};
-      }
-    }
   }
 `;
 
@@ -33,6 +20,8 @@ export const ItemList = styled.li`
   align-items: center;
   height: 7rem;
   transition: all 0.5s;
+  gap: 1rem;
+  font-size: 1.8rem;
   background-color: ${({ theme, isActive }) =>
     isActive ? theme.COLORS.BACKGROUND_600 : ""};
 
