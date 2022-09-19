@@ -1,3 +1,4 @@
+import { useNavigate } from "react-router-dom";
 import {
   Container,
   EditButton,
@@ -6,6 +7,7 @@ import {
 } from "./styles";
 
 export function RowTableProducts({ id, product, price, ...rest }) {
+  const navigate = useNavigate();
   return (
     <Container>
       <td>{id}</td>
@@ -13,7 +15,7 @@ export function RowTableProducts({ id, product, price, ...rest }) {
       <td>R$: {price}</td>
       <td>
         <ButtonsContainer>
-          <EditButton>Editar</EditButton>
+          <EditButton onClick={() => navigate(`edit/${id}`)}>Editar</EditButton>
           <DeleteButton>Excluir</DeleteButton>
         </ButtonsContainer>
       </td>

@@ -10,7 +10,7 @@ import { Container, ContainerWrapper } from "./styles";
 
 export function Favorites({ ...rest }) {
   const { favoritesProducts } = useFavoritesProducts();
-
+  console.log(favoritesProducts);
   return (
     <Container>
       <Header />

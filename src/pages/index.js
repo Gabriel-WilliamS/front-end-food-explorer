@@ -8,6 +8,8 @@ import { OrderHistory } from "./OrderHistory";
 import { Favorites } from "./Favorites";
 import { Dashboard } from "./Dashboard";
 import { Products } from "./Products";
+import { EditProduct } from "./EditProduct";
+import { AddProduct } from "./AddProduct";
 export {
   AdminRegister,
   ClientRegister,
@@ -18,5 +20,7 @@ export {
   OrderHistory,
   Favorites,
   Dashboard,
-  Products
+  Products,
+  EditProduct,
+  AddProduct
 };

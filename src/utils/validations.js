@@ -22,3 +22,12 @@ export const creditCard = yup.object().shape({
   validate: yup.string().min(4).max(4).required(),
   cvc: yup.string().min(4).max(4).required()
 });
+
+export const productFields = yup.object().shape({
+  file: yup.mixed().required("File is required"),
+  name: yup.string().trim().required(),
+  // ingredient: yup.string().trim().required(),
+  price: yup.number().required(),
+  category: yup.number().typeError("Escolha uma categoria!").required(),
+  description: yup.string().trim().required()
+});

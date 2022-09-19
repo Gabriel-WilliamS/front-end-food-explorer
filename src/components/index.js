@@ -15,8 +15,11 @@ import { RowTableOrderHistory } from "./RowTableOrderHistory";
 import { RowTableProducts } from "./RowTableProducts";
 import { SideMenu } from "./SideMenu";
 import { DashbordCard } from "./DashbordCard";
-import { PageAdmin } from "./PageAdmin";
 import { BackButton } from "./BackButton";
+import { DropZoneInput } from "./DropZoneInput";
+import { Textarea } from "./Textarea";
+import { SelectOptionInput } from "./SelectOptionInput";
+import { IngredientField } from "./IngredientField";
 export {
   Button,
   InputLabel,
@@ -35,6 +38,9 @@ export {
   HeaderAdmin,
   SideMenu,
   DashbordCard,
-  PageAdmin,
-  BackButton
+  BackButton,
+  DropZoneInput,
+  Textarea,
+  SelectOptionInput,
+  IngredientField
 };

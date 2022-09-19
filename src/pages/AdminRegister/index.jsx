@@ -11,6 +11,7 @@ export function AdminRegister() {
   const {
     register,
     handleSubmit,
+
     formState: { errors }
   } = useForm({
     resolver: yupResolver(login)

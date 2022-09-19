@@ -1,4 +1,4 @@
-import { Button, RowTableProducts, PageAdmin } from "../../components";
+import { Button, RowTableProducts } from "../../components";
 import { Table, TitlePage } from "./styles";
 
 export function Products() {
@@ -25,7 +25,7 @@ export function Products() {
     }
   ];
   return (
-    <PageAdmin>
+    <>
       <TitlePage>
         <h1>Produtos cadastrados</h1> <Button name="Cadastrar produto" />{" "}
       </TitlePage>
@@ -42,6 +42,7 @@ export function Products() {
           {data &&
             data.map((product) => (
               <RowTableProducts
+                key={product.id}
                 id={product.id}
                 product={product.name}
                 price={product.price}
@@ -49,6 +50,6 @@ export function Products() {
             ))}
         </tbody>
       </Table>
-    </PageAdmin>
+    </>
   );
 }

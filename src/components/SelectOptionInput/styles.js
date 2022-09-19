@@ -5,17 +5,20 @@ export const Container = styled.div`
   flex-direction: column;
   gap: 0.8rem;
 
-  > input {
+  > select {
     height: 4.8rem;
+    max-height: 8rem;
+    overflow: auto;
+    border-radius: 0.5rem;
     padding: 0 1.4rem;
-    background-color: transparent;
+
     border: 1px solid
       ${({ theme, borderError, error }) =>
         borderError && error ? theme.COLORS.RED700 : theme.COLORS.WHITE};
-    border-radius: 0.5rem;
-  }
+    background-color: transparent;
 
-  > span {
-    color: ${({ theme }) => theme.COLORS.RED700} !important;
+    option {
+      background-color: ${({ theme }) => theme.COLORS.BACKGROUND_600};
+    }
   }
 `;

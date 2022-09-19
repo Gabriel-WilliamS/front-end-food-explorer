@@ -2,6 +2,7 @@ import styled from "styled-components";
 
 export const DashbordCardContainer = styled.div`
   width: 100%;
+  height: 21.7rem;
   display: flex;
   align-items: center;
   gap: 3rem;

@@ -1,16 +1,19 @@
 import { useState } from "react";
-import { HeaderAdmin } from "../HeaderAdmin";
-import { SideMenu } from "../SideMenu";
+import { Outlet } from "react-router-dom";
+import { HeaderAdmin } from "../../components/HeaderAdmin";
+import { SideMenu } from "../../components/SideMenu";
 import { Container, ContentWrapper } from "./styles";
 
-export function PageAdmin({ children, ...rest }) {
+export function PageAdmin({ ...rest }) {
   const [menuOpen, setMenuOpen] = useState(false);
 
   return (
     <Container {...rest}>
       <HeaderAdmin menuOpen={menuOpen} setMenuOpen={setMenuOpen} />
       <SideMenu openMenu={menuOpen} className={menuOpen ? "menuOpen" : ""} />
-      <ContentWrapper>{children}</ContentWrapper>
+      <ContentWrapper>
+        <Outlet />
+      </ContentWrapper>
     </Container>
   );
 }

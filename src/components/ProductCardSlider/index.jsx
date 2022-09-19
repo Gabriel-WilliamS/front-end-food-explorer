@@ -27,9 +27,8 @@ export function ProductCardSlider({
   function handleFavoriteProduct() {
     const productFavorite = {
       ...product,
-      isFavorited: productsLike
+      isFavorited: !productsLike
     };
-
     onAddProductFavorite(productFavorite);
     setProductsLike(!productsLike);
   }
