@@ -8,7 +8,7 @@ export function AdminRoutes() {
       <Route path="/" element={<PageAdmin />}>
         <Route path="/" element={<Dashboard />} />
         <Route path="/products" element={<Products />} />
-        <Route path="/products/create" element={<AddProduct />} />
+        <Route path="/products/new" element={<AddProduct />} />
         <Route path="/products/edit/:id" element={<EditProduct />} />
       </Route>
     </Routes>
