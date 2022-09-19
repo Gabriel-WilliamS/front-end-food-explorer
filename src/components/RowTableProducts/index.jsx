@@ -6,12 +6,14 @@ import {
   ButtonsContainer
 } from "./styles";
 
-export function RowTableProducts({ id, product, price, ...rest }) {
+export function RowTableProducts({ id, product, category, price, ...rest }) {
   const navigate = useNavigate();
+
   return (
     <Container>
       <td>{id}</td>
       <td>{product}</td>
+      <td>{category}</td>
       <td>R$: {price}</td>
       <td>
         <ButtonsContainer>
