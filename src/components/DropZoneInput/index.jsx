@@ -33,7 +33,7 @@ export function DropZoneInput({
   });
 
   function handleClickClear() {
-    setValue(fieldName, "", {
+    setValue(fieldName, null, {
       shouldValidate: true
     });
   }
@@ -41,24 +41,16 @@ export function DropZoneInput({
   return (
     <Container isDragActive={isDragActive} error={error}>
       <div {...getRootProps({ className: "dropzone" })}>
-        {getValues(fieldName) ? (
-          ""
-        ) : (
+        {!getValues(fieldName) && (
           <p>{error ? error.message : "Adicione uma imagem."}</p>
         )}
         <input {...getInputProps()} />
       </div>
 
-      {getValues(fieldName) ? (
-        <AiOutlineClose onClick={handleClickClear} />
-      ) : (
-        ""
-      )}
+      {getValues(fieldName) && <AiOutlineClose onClick={handleClickClear} />}
       <aside>
-        {getValues(fieldName) ? (
+        {getValues(fieldName) && (
           <img src={getValues(fieldName).preview} alt="" />
-        ) : (
-          ""
         )}
       </aside>
     </Container>
