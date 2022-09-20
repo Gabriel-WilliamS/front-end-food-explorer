@@ -10,6 +10,8 @@ import { Dashboard } from "./Dashboard";
 import { Products } from "./Products";
 import { EditProduct } from "./EditProduct";
 import { AddProduct } from "./AddProduct";
+import { Categories } from "./Categories";
+import { AddCategory } from "./AddCategory";
 export {
   AdminRegister,
   ClientRegister,
@@ -22,5 +24,7 @@ export {
   Dashboard,
   Products,
   EditProduct,
-  AddProduct
+  AddProduct,
+  Categories,
+  AddCategory
 };

@@ -31,3 +31,7 @@ export const productFields = yup.object().shape({
   category: yup.number().typeError("Escolha uma categoria!").required(),
   description: yup.string().trim().required()
 });
+
+export const categoryFields = yup.object().shape({
+  name: yup.string().required()
+});

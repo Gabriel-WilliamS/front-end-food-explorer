@@ -20,6 +20,7 @@ import { DropZoneInput } from "./DropZoneInput";
 import { Textarea } from "./Textarea";
 import { SelectOptionInput } from "./SelectOptionInput";
 import { IngredientField } from "./IngredientField";
+import { RowTableCategories } from "./RowTableCategories";
 export {
   Button,
   InputLabel,
@@ -42,5 +43,6 @@ export {
   DropZoneInput,
   Textarea,
   SelectOptionInput,
-  IngredientField
+  IngredientField,
+  RowTableCategories
 };

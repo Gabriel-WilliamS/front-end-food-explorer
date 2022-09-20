@@ -4,30 +4,14 @@ import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 
 export function Products() {
-  // const data = [
-  //   {
-  //     id: 1,
-  //     name: "Salada Ravanella",
-  //     price: "3.57"
-  //   },
-  //   {
-  //     id: 2,
-  //     name: "Spaguetti Gambe",
-  //     price: "9.97"
-  //   },
-  //   {
-  //     id: 3,
-  //     name: "Torradas de Parma",
-  //     price: "10.99"
-  //   },
-  //   {
-  //     id: 4,
-  //     name: "Prugna Pie",
-  //     price: "25.97"
-  //   }
-  // ];
-
-  const [data, setData] = useState();
+  const [data, setData] = useState([
+    {
+      id: 1,
+      name: "Salada Ravanella",
+      category: "Prato principal",
+      price: "3.57"
+    }
+  ]);
 
   const navigate = useNavigate();
 
@@ -38,7 +22,7 @@ export function Products() {
   return (
     <>
       <TitlePage>
-        <h1>Produtos cadastrados</h1>{" "}
+        <h1>Produtos cadastrados</h1>
         <Button name="Cadastrar produto" onClick={handleNavigateToNewProduct} />
       </TitlePage>
       <Table>
@@ -59,6 +43,7 @@ export function Products() {
                 id={product.id}
                 product={product.name}
                 price={product.price}
+                category={product.category}
               />
             ))}
         </tbody>
