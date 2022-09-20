@@ -43,7 +43,7 @@ export function EditProduct({ ...rest }) {
     }
   ];
 
-  function handleLogin(data) {
+  function handleEditProduct(data) {
     data.price = data.price.toFixed(2);
 
     console.log(data);
@@ -58,7 +58,7 @@ export function EditProduct({ ...rest }) {
       <BackButton />
       <Section title={"Editar produto"}>
         <Form
-          onSubmit={handleSubmit(handleLogin)}
+          onSubmit={handleSubmit(handleEditProduct)}
           onKeyPress={(e) => {
             if (e.key == "Enter") {
               e.preventDefault();
@@ -113,6 +113,7 @@ export function EditProduct({ ...rest }) {
                 register={register}
                 name="description"
                 error={errors.description}
+                borderError={true}
               />
             </div>
           </FieldsWapper>
