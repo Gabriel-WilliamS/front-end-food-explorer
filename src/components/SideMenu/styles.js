@@ -8,7 +8,7 @@ export const Container = styled.div`
   transition: all 0.5s;
 
   background-color: ${({ theme }) => theme.COLORS.BACKGROUND_700};
-
+  overflow-x: hidden;
   &.menuOpen {
     width: 24rem;
   }
