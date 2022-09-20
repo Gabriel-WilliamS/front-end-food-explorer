@@ -57,7 +57,7 @@ export function AddProduct({ ...rest }) {
     <>
       <Container>
         <BackButton />
-        <Section title={"Editar produto"}>
+        <Section title={"Cadastrar produto"}>
           <Form
             onSubmit={handleSubmit(handleLogin)}
             onKeyPress={(e) => {
@@ -117,7 +117,7 @@ export function AddProduct({ ...rest }) {
                 />
               </div>
             </FieldsWapper>
-            <Button name="Salvar edição" />
+            <Button name="Cadastrar" />
           </Form>
         </Section>
       </Container>
