@@ -13,8 +13,9 @@ export const Container = styled.div`
     resize: none;
 
     background-color: transparent;
-    border: 1px solid;
-    ${({ theme, error }) => (error ? theme.COLORS.RED700 : theme.COLORS.WHITE)};
+    border: 1px solid
+      ${({ theme, error, borderError }) =>
+        borderError && error ? theme.COLORS.RED700 : theme.COLORS.WHITE};
     border-radius: 0.5rem;
     padding: 1.2rem 1.4rem;
   }
