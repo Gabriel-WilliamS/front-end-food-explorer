@@ -11,6 +11,9 @@ export function IngredientField({
   ...rest
 }) {
   function handleNewIngredient() {
+    if (!newIngredient) {
+      return;
+    }
     setIngredients((oldIngredients) => [...oldIngredients, newIngredient]);
     setNewIngredient("");
   }
@@ -49,7 +52,11 @@ export function IngredientField({
             }}
           />
 
-          <datalist id="ingredients"></datalist>
+          <datalist id="ingredients">
+            <option value="ovo" />
+            <option value="alface" />
+            <option value="frango" />
+          </datalist>
         </div>
       </IncredientsWrapper>
     </Container>
