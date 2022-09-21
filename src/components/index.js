@@ -21,6 +21,7 @@ import { Textarea } from "./Textarea";
 import { SelectOptionInput } from "./SelectOptionInput";
 import { IngredientField } from "./IngredientField";
 import { RowTableCategories } from "./RowTableCategories";
+import { RowTableIngredients } from "./RowTableIngredients";
 export {
   Button,
   InputLabel,
@@ -44,5 +45,6 @@ export {
   Textarea,
   SelectOptionInput,
   IngredientField,
-  RowTableCategories
+  RowTableCategories,
+  RowTableIngredients
 };

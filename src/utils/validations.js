@@ -35,3 +35,8 @@ export const productFields = yup.object().shape({
 export const categoryFields = yup.object().shape({
   name: yup.string().required()
 });
+
+export const ingredientsFields = yup.object().shape({
+  file: yup.mixed(),
+  name: yup.string().trim().required()
+});

@@ -5,12 +5,14 @@ import {
   AiOutlineBars
 } from "react-icons/ai";
 import { useNavigate, useMatch } from "react-router-dom";
+import { GiFruitBowl } from "react-icons/gi";
 
 export function SideMenu({ openMenu, setOpenMenu, isActive = false, ...rest }) {
   const navigate = useNavigate();
   const pageIsDashboard = useMatch("/");
   const pageIsProducts = useMatch("/products");
-  const pageIsCategorys = useMatch("/categories");
+  const pageIsCategories = useMatch("/categories");
+  const pageIsIngredients = useMatch("/ingredients");
 
   function handleNavigateToDashboard() {
     navigate("/");
@@ -22,6 +24,10 @@ export function SideMenu({ openMenu, setOpenMenu, isActive = false, ...rest }) {
 
   function handleNavigateToCategories() {
     navigate("/categories");
+  }
+
+  function handleNavigateToIngredients() {
+    navigate("/ingredients");
   }
 
   return (
@@ -45,11 +51,18 @@ export function SideMenu({ openMenu, setOpenMenu, isActive = false, ...rest }) {
               </ItemList>
 
               <ItemList
-                isActive={pageIsCategorys}
+                isActive={pageIsCategories}
                 onClick={handleNavigateToCategories}
               >
                 <AiOutlineBars />
                 Categorias
+              </ItemList>
+
+              <ItemList
+                isActive={pageIsIngredients}
+                onClick={handleNavigateToIngredients}
+              >
+                <GiFruitBowl /> Ingredientes
               </ItemList>
             </>
           ) : (
@@ -69,10 +82,17 @@ export function SideMenu({ openMenu, setOpenMenu, isActive = false, ...rest }) {
               </ItemList>
 
               <ItemList
-                isActive={pageIsCategorys}
+                isActive={pageIsCategories}
                 onClick={handleNavigateToCategories}
               >
                 <AiOutlineBars />
+              </ItemList>
+
+              <ItemList
+                isActive={pageIsIngredients}
+                onClick={handleNavigateToIngredients}
+              >
+                <GiFruitBowl />
               </ItemList>
             </>
           )}

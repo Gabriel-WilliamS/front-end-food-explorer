@@ -13,9 +13,13 @@ import {
 import { productFields } from "../../utils/validations";
 import { Container, FieldsWapper, Form } from "./styles";
 import { useState } from "react";
+import { toast } from "react-toastify";
 
 export function AddProduct({ ...rest }) {
   const [fileName, setFileName] = useState("");
+  const [ingredients, setIngredients] = useState([]);
+  const [newIngredient, setNewIngredient] = useState("");
+
   const {
     register,
     handleSubmit,
@@ -44,6 +48,19 @@ export function AddProduct({ ...rest }) {
   ];
 
   function handleLogin(data) {
+    if (ingredients.length <= 0) {
+      return toast.error("Selecione os ingredientes");
+    }
+    if (newIngredient) {
+      const confirmUser = confirm(
+        "Existe um ingrediente que ainda não foi adicionado deseja continuar mesmo assim ?"
+      );
+
+      if (!confirmUser) {
+        return;
+      }
+    }
+    data.ingredients = ingredients;
     data.price = data.price.toFixed(2);
 
     console.log(data);
@@ -107,7 +124,13 @@ export function AddProduct({ ...rest }) {
                   error={errors.name}
                   borderError={true}
                 />
-                <IngredientField label="Ingredientes" />
+                <IngredientField
+                  label="Ingredientes"
+                  setIngredients={setIngredients}
+                  ingredients={ingredients}
+                  newIngredient={newIngredient}
+                  setNewIngredient={setNewIngredient}
+                />
                 <Textarea
                   label="Descrição"
                   placeholder="Fale brevemente sobre o prato, seus ingredientes e composição"

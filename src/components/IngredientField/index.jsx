@@ -1,18 +1,24 @@
 import { Container, IncredientsWrapper } from "./styles";
 import { AiOutlineCloseCircle } from "react-icons/ai";
-import { useState } from "react";
 
-export function IngredientField({ id, label, ...rest }) {
-  const [ingredients, setIngredients] = useState([]);
-  const [newIngredient, setNewIngredient] = useState("");
-
+export function IngredientField({
+  id,
+  label,
+  setIngredients,
+  ingredients,
+  newIngredient,
+  setNewIngredient,
+  ...rest
+}) {
   function handleNewIngredient() {
-    setIngredients([...ingredients, newIngredient]);
+    setIngredients((oldIngredients) => [...oldIngredients, newIngredient]);
     setNewIngredient("");
   }
 
   function handleRemoveIngredient(item) {
-    setIngredients(ingredients.filter((ingredient, index) => index != item));
+    setIngredients((oldIngredients) =>
+      oldIngredients.filter((ingredient, index) => index != item)
+    );
   }
   return (
     <Container {...rest}>
@@ -31,7 +37,8 @@ export function IngredientField({ id, label, ...rest }) {
         <div>
           <input
             id={id}
-            type="text"
+            // type="text"
+            list="ingredients"
             placeholder="Adicione um ingrediente"
             onChange={(e) => setNewIngredient(e.target.value)}
             value={newIngredient}
@@ -41,6 +48,8 @@ export function IngredientField({ id, label, ...rest }) {
               }
             }}
           />
+
+          <datalist id="ingredients"></datalist>
         </div>
       </IncredientsWrapper>
     </Container>

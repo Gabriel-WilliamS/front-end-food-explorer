@@ -34,6 +34,10 @@ export const IncredientsWrapper = styled.div`
       border: none;
       outline: none;
     }
+
+    datalist {
+      background-color: red;
+    }
   }
 
   > span {
