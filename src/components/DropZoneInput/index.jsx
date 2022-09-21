@@ -1,4 +1,3 @@
-import React from "react";
 import { useDropzone } from "react-dropzone";
 import { Container } from "./styles";
 import { AiOutlineClose } from "react-icons/ai";

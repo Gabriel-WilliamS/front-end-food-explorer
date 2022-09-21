@@ -1,8 +1,8 @@
 import styled from "styled-components";
 
 export const Container = styled.section`
-  width: 25rem;
-  height: 25rem;
+  min-width: 25rem;
+  min-height: 25rem;
   border: 1px dashed
     ${({ theme, isDragActive, error }) =>
       isDragActive
