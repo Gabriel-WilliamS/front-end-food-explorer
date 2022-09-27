@@ -3,7 +3,6 @@ import { Container } from "./styles";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { login } from "../../utils/validations";
-import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
 import { Button, InputLabel } from "../../components";
 import { useAuth } from "../../hooks/auth";
