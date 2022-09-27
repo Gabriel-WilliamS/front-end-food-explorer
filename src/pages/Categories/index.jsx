@@ -1,16 +1,33 @@
-import { Container, Table, TitlePage } from "./styles";
+import { Container, Table, TitlePage, LoadingAnimate } from "./styles";
 import { Button } from "../../components";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { RowTableCategories } from "../../components/";
 import { useNavigate } from "react-router-dom";
-export function Categories({ ...rest }) {
-  const [categories, setCategories] = useState([{ id: 1, name: "Bebidas" }]);
+import { api } from "../../services/api";
+import Lottie from "lottie-react";
+import loadingAnimate from "../../assets/animations/loading.json";
 
+export function Categories({ ...rest }) {
+  const [categories, setCategories] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
 
   function handleNavigationToNewCategory() {
     navigate("new");
   }
+
+  useEffect(() => {
+    const fetchCategories = async () => {
+      setIsLoading(true);
+
+      const { data } = await api.get("/categories");
+
+      setCategories(data);
+      setIsLoading(false);
+    };
+    fetchCategories();
+  }, []);
+
   return (
     <Container {...rest}>
       <TitlePage>
@@ -20,25 +37,36 @@ export function Categories({ ...rest }) {
           onClick={handleNavigationToNewCategory}
         />
       </TitlePage>
-      <Table>
-        <thead>
-          <tr>
-            <th>ID</th>
-            <th>Categoria</th>
-            <th>Ações</th>
-          </tr>
-        </thead>
-        <tbody>
-          {categories &&
-            categories.map((category) => (
-              <RowTableCategories
-                key={category.id}
-                id={category.id}
-                category={category.name}
-              />
-            ))}
-        </tbody>
-      </Table>
+
+      {isLoading ? (
+        <LoadingAnimate>
+          <Lottie
+            animationData={loadingAnimate}
+            loop={true}
+            style={{ width: 200 }}
+          />
+        </LoadingAnimate>
+      ) : (
+        <Table>
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Categoria</th>
+              <th>Ações</th>
+            </tr>
+          </thead>
+          <tbody>
+            {categories &&
+              categories.map((category) => (
+                <RowTableCategories
+                  key={category.id}
+                  id={category.id}
+                  category={category.name}
+                />
+              ))}
+          </tbody>
+        </Table>
+      )}
     </Container>
   );
 }
