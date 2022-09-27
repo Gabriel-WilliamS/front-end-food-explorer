@@ -37,6 +37,8 @@ export function Login() {
           placeholder="Exemplo: exemplo@exemplo.com.br"
           register={register}
           error={errors.email}
+          textError={true}
+          borderError={true}
         />
 
         <InputLabel
@@ -46,6 +48,8 @@ export function Login() {
           type="password"
           register={register}
           error={errors.password}
+          textError={true}
+          borderError={true}
         />
 
         <Button name="Entrar" type="submit" />
