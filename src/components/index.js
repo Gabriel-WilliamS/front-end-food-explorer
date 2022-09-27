@@ -22,6 +22,7 @@ import { SelectOptionInput } from "./SelectOptionInput";
 import { IngredientField } from "./IngredientField";
 import { RowTableCategories } from "./RowTableCategories";
 import { RowTableIngredients } from "./RowTableIngredients";
+import { RowTableOrders } from "./RowTableOrders";
 export {
   Button,
   InputLabel,
@@ -46,5 +47,6 @@ export {
   SelectOptionInput,
   IngredientField,
   RowTableCategories,
-  RowTableIngredients
+  RowTableIngredients,
+  RowTableOrders
 };

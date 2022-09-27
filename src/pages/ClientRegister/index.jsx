@@ -3,9 +3,10 @@ import { Button, InputLabel } from "../../components";
 import { Container } from "./styles";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { login } from "../../utils/validations";
+import { createUserAndAdmin } from "../../utils/validations";
 import { useNavigate } from "react-router-dom";
-
+import { api } from "../../services/api";
+import { toast } from "react-toastify";
 export function ClientRegister() {
   const navigate = useNavigate();
 
@@ -14,11 +15,21 @@ export function ClientRegister() {
     handleSubmit,
     formState: { errors }
   } = useForm({
-    resolver: yupResolver(login)
+    resolver: yupResolver(createUserAndAdmin)
   });
 
   function handleLogin(data) {
-    console.log(data);
+    try {
+      api.post("/user-register", {
+        name: data.name,
+        email: data.email,
+        password: data.password
+      });
+      toast.success("Conta criada com sucesso!");
+      navigate("/");
+    } catch (error) {
+      toast.error("Error ao criar a conta.");
+    }
   }
 
   function handleNavigate() {
@@ -38,6 +49,8 @@ export function ClientRegister() {
           name="name"
           register={register}
           error={errors.name}
+          textError={true}
+          borderError={true}
         />
 
         <InputLabel
@@ -46,6 +59,8 @@ export function ClientRegister() {
           placeholder="Exemplo: exemplo@exemplo.com.br"
           register={register}
           error={errors.email}
+          textError={true}
+          borderError={true}
         />
         <InputLabel
           label="Senha"
@@ -54,6 +69,8 @@ export function ClientRegister() {
           type="password"
           register={register}
           error={errors.password}
+          textError={true}
+          borderError={true}
         />
 
         <Button name="Criar conta" type="submit" />

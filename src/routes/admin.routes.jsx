@@ -9,7 +9,8 @@ import {
   AddCategory,
   Ingredients,
   EditIngredient,
-  AddIngredient
+  AddIngredient,
+  AllOrders
 } from "../pages/";
 import { EditCategory } from "../pages/EditCategory";
 
@@ -27,6 +28,7 @@ export function AdminRoutes() {
         <Route path="/ingredients" element={<Ingredients />} />
         <Route path="/ingredients/edit/:id" element={<EditIngredient />} />
         <Route path="/ingredients/new" element={<AddIngredient />} />
+        <Route path="/orders" element={<AllOrders />} />
       </Route>
     </Routes>
   );

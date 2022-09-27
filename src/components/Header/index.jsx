@@ -1,6 +1,6 @@
 import { Container, ContentWrapper } from "./styles";
 import logoImg from "../../assets/svg/logo.svg";
-import signOut from "../../assets/svg/signOut.svg";
+import signOutImg from "../../assets/svg/signOut.svg";
 import receipt from "../../assets/svg/receipt.svg";
 import searchImg from "../../assets/svg/search.svg";
 import { BsCart3 } from "react-icons/bs";
@@ -8,6 +8,7 @@ import { InputIcon, HambMenu } from "../../components";
 import { useNavigate, useMatch } from "react-router-dom";
 import { useState } from "react";
 import { useProductsOnCart } from "../../hooks/useProductsOnCart";
+import { useAuth } from "../../hooks/auth";
 
 export function Header({ setSearch }) {
   const { productsInCart } = useProductsOnCart();
@@ -15,10 +16,7 @@ export function Header({ setSearch }) {
 
   const navigate = useNavigate();
   const pageIsHome = useMatch("/");
-
-  function handleNavigateToRegister() {
-    navigate("/register");
-  }
+  const { signOut } = useAuth();
 
   function handleNavigateToCart() {
     navigate("/cart");
@@ -26,6 +24,12 @@ export function Header({ setSearch }) {
   function handleNavigateToHome() {
     navigate("/");
   }
+
+  function handleNavigateToLogin() {
+    signOut();
+    navigate("/");
+  }
+
   function handleNavigateToFavorites() {
     navigate("/favorites");
   }
@@ -72,8 +76,8 @@ export function Header({ setSearch }) {
             Meus pedidos
           </button>
 
-          <a onClick={handleNavigateToRegister}>
-            <img src={signOut} alt="Botão de saida" />
+          <a onClick={handleNavigateToLogin}>
+            <img src={signOutImg} alt="Botão de saida" />
           </a>
         </div>
 
@@ -84,8 +88,8 @@ export function Header({ setSearch }) {
               <img src={receipt} alt="Receipt Icon" />
               Meus pedidos
             </li>
-            <li>
-              <img src={signOut} alt="Botão de saida" />
+            <li onClick={handleNavigateToLogin}>
+              <img src={signOutImg} alt="Botão de saida" />
               Sair
             </li>
           </ul>

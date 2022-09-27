@@ -20,6 +20,7 @@ export const ItemList = styled.li`
   align-items: center;
   height: 7rem;
   transition: all 0.5s;
+
   gap: 1rem;
   font-size: 1.8rem;
   background-color: ${({ theme, isActive }) =>

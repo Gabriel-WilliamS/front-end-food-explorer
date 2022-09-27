@@ -12,7 +12,6 @@ var acceptedCreditCards = {
 };
 
 export const login = yup.object().shape({
-  name: yup.string().trim().lowercase().required(),
   email: yup.string().trim().lowercase().email().required(),
   password: yup.string().trim().min(6).required()
 });
@@ -21,6 +20,12 @@ export const creditCard = yup.object().shape({
   numberCard: yup.string().min(16).max(16).trim().required(),
   validate: yup.string().min(4).max(4).required(),
   cvc: yup.string().min(4).max(4).required()
+});
+
+export const createUserAndAdmin = yup.object().shape({
+  name: yup.string().trim().required(),
+  email: yup.string().trim().lowercase().email().required(),
+  password: yup.string().trim().min(6).required()
 });
 
 export const productFields = yup.object().shape({

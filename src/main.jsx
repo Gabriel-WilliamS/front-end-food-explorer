@@ -8,6 +8,7 @@ import { ToastContainer } from "react-toastify";
 import { Routes } from "./routes";
 import ProductsOnCartProvider from "./contexts/productsOnCart";
 import FavoritesProductsProvider from "./contexts/favoritesProducts";
+import { AuthProvider } from "./hooks/auth";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
@@ -15,7 +16,9 @@ ReactDOM.createRoot(document.getElementById("root")).render(
       <ProductsOnCartProvider>
         <FavoritesProductsProvider>
           <GlobalStyles />
-          <Routes />
+          <AuthProvider>
+            <Routes />
+          </AuthProvider>
           <ToastContainer />
         </FavoritesProductsProvider>
       </ProductsOnCartProvider>

@@ -1,15 +1,18 @@
 import { Container, ContentWrapper, SideNav, MenuContent } from "./styles";
 import logoImg from "../../assets/svg/logo.svg";
 import iconLogoImg from "../../assets/svg/iconLogo.svg";
-import signOut from "../../assets/svg/signOut.svg";
+import signOutImg from "../../assets/svg/signOut.svg";
 import { HambMenu } from "..";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
+import { useAuth } from "../../hooks/auth";
 
 export function HeaderAdmin({ menuOpen, setMenuOpen }) {
   const navigate = useNavigate();
+  const { signOut } = useAuth();
 
   function handleNavigateToLogin() {
+    signOut();
     navigate("/");
   }
 
@@ -37,7 +40,7 @@ export function HeaderAdmin({ menuOpen, setMenuOpen }) {
         </MenuContent>
         <div className="container-menu">
           <a onClick={handleNavigateToLogin}>
-            <img src={signOut} alt="Botão de saida" />
+            <img src={signOutImg} alt="Botão de saida" />
           </a>
         </div>
       </ContentWrapper>

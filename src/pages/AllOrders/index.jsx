@@ -1,9 +1,7 @@
-import { Container, ContainerWrapper } from "./styles";
-import { Footer, Header, RowTableOrderHistory } from "../../components";
-import { useNavigate } from "react-router-dom";
-import caretLeft from "../../assets/svg/caretLeft.svg";
+import { RowTableOrders, Section } from "../../components";
+import { Container } from "./styles";
 
-export function OrderHistory({ ...rest }) {
+export function AllOrders() {
   const data = [
     {
       id: 1,
@@ -56,7 +54,7 @@ export function OrderHistory({ ...rest }) {
     },
     {
       id: 3,
-      status: "Entregue",
+      status: "Entrege",
       code: "00000003",
       details: [
         {
@@ -80,16 +78,9 @@ export function OrderHistory({ ...rest }) {
       date: "20/05 às 18h00"
     }
   ];
-  const navigate = useNavigate();
   return (
     <Container>
-      <Header />
-      <ContainerWrapper>
-        <button onClick={() => navigate(-1)}>
-          <img src={caretLeft} alt="Seta para voltar" />
-          Voltar
-        </button>
-        <h1>Pedidos</h1>
+      <Section title="Pedidos">
         <table>
           <thead>
             <tr>
@@ -101,7 +92,7 @@ export function OrderHistory({ ...rest }) {
           </thead>
           <tbody>
             {data.map((order) => (
-              <RowTableOrderHistory
+              <RowTableOrders
                 key={order.id}
                 status={order.status}
                 code={order.code}
@@ -111,8 +102,7 @@ export function OrderHistory({ ...rest }) {
             ))}
           </tbody>
         </table>
-      </ContainerWrapper>
-      <Footer />
+      </Section>
     </Container>
   );
 }

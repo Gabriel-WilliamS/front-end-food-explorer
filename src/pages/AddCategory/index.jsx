@@ -5,18 +5,30 @@ import { toast } from "react-toastify";
 import { BackButton, Button, InputLabel, Section } from "../../components";
 import { categoryFields } from "../../utils/validations";
 import { Container } from "./styles";
-
+import { api } from "../../services/api";
 export function AddCategory({ ...rest }) {
   const {
     handleSubmit,
     register,
     formState: { errors }
   } = useForm({ resolver: yupResolver(categoryFields) });
+
   const navigate = useNavigate();
-  function handleAddNewCategory(data) {
-    console.log(data);
-    toast.success("Categoria cadastrada com sucesso!");
-    navigate("/categories");
+
+  async function handleAddNewCategory(data) {
+    try {
+      await api.post("/categories", {
+        name: data.name
+      });
+      toast.success("Categoria cadastrada com sucesso!");
+      navigate("/categories");
+    } catch (error) {
+      if (error.response.data.message) {
+        toast.error(error.response.data.message);
+      } else {
+        toast.error("Erro ao criar categoria.");
+      }
+    }
   }
 
   return (

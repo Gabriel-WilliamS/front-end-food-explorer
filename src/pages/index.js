@@ -15,6 +15,7 @@ import { AddCategory } from "./AddCategory";
 import { Ingredients } from "./Ingredients";
 import { EditIngredient } from "./EditIngredient";
 import { AddIngredient } from "./AddIngredient";
+import { AllOrders } from "./AllOrders";
 export {
   AdminRegister,
   ClientRegister,
@@ -32,5 +33,6 @@ export {
   AddCategory,
   Ingredients,
   EditIngredient,
-  AddIngredient
+  AddIngredient,
+  AllOrders
 };

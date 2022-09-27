@@ -6,8 +6,11 @@ import { login } from "../../utils/validations";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
 import { Button, InputLabel } from "../../components";
+import { useAuth } from "../../hooks/auth";
 
 export function Login() {
+  const { signIn } = useAuth();
+
   const navigate = useNavigate();
   const {
     register,
@@ -18,7 +21,7 @@ export function Login() {
   });
 
   function handleLogin(data) {
-    console.log(data);
+    signIn({ email: data.email, password: data.password });
   }
 
   return (
