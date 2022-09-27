@@ -1,11 +1,9 @@
-import { Container, Table, TitlePage, LoadingAnimate } from "./styles";
-import { Button } from "../../components";
+import { Container, Table, TitlePage } from "./styles";
+import { Button, LoadingAnimate } from "../../components";
 import { useState, useEffect } from "react";
 import { RowTableCategories } from "../../components/";
 import { useNavigate } from "react-router-dom";
 import { api } from "../../services/api";
-import Lottie from "lottie-react";
-import loadingAnimate from "../../assets/animations/loading.json";
 
 export function Categories({ ...rest }) {
   const [categories, setCategories] = useState([]);
@@ -39,13 +37,7 @@ export function Categories({ ...rest }) {
       </TitlePage>
 
       {isLoading ? (
-        <LoadingAnimate>
-          <Lottie
-            animationData={loadingAnimate}
-            loop={true}
-            style={{ width: 200 }}
-          />
-        </LoadingAnimate>
+        <LoadingAnimate />
       ) : (
         <Table>
           <thead>

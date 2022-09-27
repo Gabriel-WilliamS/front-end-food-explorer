@@ -54,10 +54,3 @@ export const TitlePage = styled.div`
     width: 30rem;
   }
 `;
-
-export const LoadingAnimate = styled.div`
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-`;

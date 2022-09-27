@@ -5,6 +5,10 @@ export const Container = styled.tr`
     padding: 1.6rem;
     background-color: ${({ theme }) => theme.COLORS.BACKGROUND_800};
 
+    &:nth-child(2) {
+      text-transform: capitalize;
+    }
+
     &:first-child {
       border-radius: 0.8rem 0 0 0.8rem;
     }

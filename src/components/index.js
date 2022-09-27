@@ -23,6 +23,7 @@ import { IngredientField } from "./IngredientField";
 import { RowTableCategories } from "./RowTableCategories";
 import { RowTableIngredients } from "./RowTableIngredients";
 import { RowTableOrders } from "./RowTableOrders";
+import { LoadingAnimate } from "./LoadingAnimate";
 export {
   Button,
   InputLabel,
@@ -48,5 +49,6 @@ export {
   IngredientField,
   RowTableCategories,
   RowTableIngredients,
-  RowTableOrders
+  RowTableOrders,
+  LoadingAnimate
 };
