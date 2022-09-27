@@ -1,4 +1,5 @@
 import { createContext, useContext, useState, useEffect } from "react";
+import { toast } from "react-toastify";
 import { api } from "../services/api";
 const AuthContext = createContext({});
 
@@ -17,9 +18,9 @@ function AuthProvider({ children }) {
       localStorage.setItem("@foodexplorer:token", token);
     } catch (error) {
       if (error.response) {
-        alert(error.response.data.message);
+        toast.error(error.response.data.message);
       } else {
-        alert("Erro ao fazer login");
+        toast.error("Erro ao fazer login");
       }
     }
   }
