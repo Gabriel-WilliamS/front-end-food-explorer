@@ -18,7 +18,7 @@ export function AddCategory({ ...rest }) {
   async function handleAddNewCategory(data) {
     try {
       await api.post("/categories", {
-        name: data.name
+        name: data.name.toLowerCase().trim()
       });
       toast.success("Categoria cadastrada com sucesso!");
       navigate("/categories");
