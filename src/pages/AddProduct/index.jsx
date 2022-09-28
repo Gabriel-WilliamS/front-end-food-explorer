@@ -12,14 +12,15 @@ import {
 } from "../../components";
 import { productFields } from "../../utils/validations";
 import { Container, FieldsWapper, Form } from "./styles";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { toast } from "react-toastify";
+import { api } from "../../services/api";
 
 export function AddProduct({ ...rest }) {
   const [fileName, setFileName] = useState("");
   const [ingredients, setIngredients] = useState([]);
   const [newIngredient, setNewIngredient] = useState("");
-
+  const [categories, setCategories] = useState([]);
   const {
     register,
     handleSubmit,
@@ -31,21 +32,6 @@ export function AddProduct({ ...rest }) {
   } = useForm({
     resolver: yupResolver(productFields)
   });
-
-  const categorys = [
-    {
-      id: 1,
-      name: "Pratos principais"
-    },
-    {
-      id: 2,
-      name: "Sobremesas"
-    },
-    {
-      id: 3,
-      name: "Bebidas"
-    }
-  ];
 
   function handleLogin(data) {
     if (ingredients.length <= 0) {
@@ -69,6 +55,15 @@ export function AddProduct({ ...rest }) {
   function handleAddImage(name) {
     setFileName(name);
   }
+
+  useEffect(() => {
+    const fetchCategories = async () => {
+      const response = await api.get("/categories");
+      const data = response.data;
+      setCategories(data);
+    };
+    fetchCategories();
+  }, []);
 
   return (
     <>
@@ -95,7 +90,7 @@ export function AddProduct({ ...rest }) {
                 />
                 <SelectOptionInput
                   label="Categoria"
-                  options={categorys}
+                  options={categories}
                   register={register}
                   error={errors.category}
                   id="category"
