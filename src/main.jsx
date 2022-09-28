@@ -19,7 +19,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(
           <AuthProvider>
             <Routes />
           </AuthProvider>
-          <ToastContainer />
+          <ToastContainer autoClose={3000} />
         </FavoritesProductsProvider>
       </ProductsOnCartProvider>
     </ThemeProvider>
