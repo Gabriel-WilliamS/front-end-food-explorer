@@ -52,7 +52,6 @@ export function IngredientField({
   }
 
   function handleRemoveIngredient(item) {
-    console.log(item);
     setIngredients((oldIngredients) =>
       oldIngredients.filter((ingredient) => ingredient != item)
     );
