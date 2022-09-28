@@ -1,17 +1,41 @@
 import { Container, Table, TitlePage } from "./styles";
-import { Button, LoadingAnimate } from "../../components";
+import { Button, LoadingAnimate, Modal } from "../../components";
 import { useState, useEffect } from "react";
 import { RowTableCategories } from "../../components/";
 import { useNavigate } from "react-router-dom";
 import { api } from "../../services/api";
+import { toast } from "react-toastify";
 
 export function Categories({ ...rest }) {
   const [categories, setCategories] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
+  const [openModal, setOpenModal] = useState(false);
+  const [categoryDelete, setCategoryDelete] = useState(0);
+
   const navigate = useNavigate();
 
   function handleNavigationToNewCategory() {
     navigate("new");
+  }
+
+  async function handleDeleteCategory(id) {
+    try {
+      await api.delete("/categories", {
+        data: {
+          id: parseInt(id)
+        }
+      });
+
+      toast.success("Categoria excluida com sucesso!");
+      setCategories((oldCategories) =>
+        oldCategories.filter((category) => category.id != id)
+      );
+
+      setOpenModal(false);
+      setCategoryDelete([]);
+    } catch (error) {
+      toast.error("Erro ao excluir categoria!");
+    }
   }
 
   useEffect(() => {
@@ -54,11 +78,21 @@ export function Categories({ ...rest }) {
                   key={category.id}
                   id={category.id}
                   category={category.name}
+                  setOpenModal={setOpenModal}
+                  setCategoryDelete={setCategoryDelete}
                 />
               ))}
           </tbody>
         </Table>
       )}
+
+      <Modal
+        openModal={openModal}
+        setOpenModal={setOpenModal}
+        onHandleDeleteCategory={handleDeleteCategory}
+        categoryDelete={categoryDelete}
+        setCategoryDelete={setCategoryDelete}
+      />
     </Container>
   );
 }

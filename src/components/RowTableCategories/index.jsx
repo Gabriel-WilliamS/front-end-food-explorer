@@ -6,8 +6,18 @@ import {
   ButtonsContainer
 } from "./styles";
 
-export function RowTableCategories({ id, category, ...rest }) {
+export function RowTableCategories({
+  id,
+  setOpenModal,
+  category,
+  setCategoryDelete
+}) {
   const navigate = useNavigate();
+
+  async function handleToOpenModal() {
+    setOpenModal((oldState) => !oldState);
+    setCategoryDelete(id);
+  }
 
   return (
     <Container>
@@ -16,7 +26,7 @@ export function RowTableCategories({ id, category, ...rest }) {
       <td>
         <ButtonsContainer>
           <EditButton onClick={() => navigate(`edit/${id}`)}>Editar</EditButton>
-          <DeleteButton>Excluir</DeleteButton>
+          <DeleteButton onClick={handleToOpenModal}>Excluir</DeleteButton>
         </ButtonsContainer>
       </td>
     </Container>

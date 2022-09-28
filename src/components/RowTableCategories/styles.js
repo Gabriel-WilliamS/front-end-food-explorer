@@ -22,6 +22,13 @@ export const Container = styled.tr`
 export const ButtonsContainer = styled.div`
   display: flex;
   gap: 1rem;
+
+  button:nth-child(2) {
+    padding: 0.5rem;
+    border-radius: 0.8rem;
+    background-color: ${({ theme }) => theme.COLORS.RED700};
+    border: none;
+  }
 `;
 
 export const EditButton = styled.button`

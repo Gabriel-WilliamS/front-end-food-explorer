@@ -24,6 +24,7 @@ import { RowTableCategories } from "./RowTableCategories";
 import { RowTableIngredients } from "./RowTableIngredients";
 import { RowTableOrders } from "./RowTableOrders";
 import { LoadingAnimate } from "./LoadingAnimate";
+import { Modal } from "./Modal";
 export {
   Button,
   InputLabel,
@@ -50,5 +51,6 @@ export {
   RowTableCategories,
   RowTableIngredients,
   RowTableOrders,
-  LoadingAnimate
+  LoadingAnimate,
+  Modal
 };
