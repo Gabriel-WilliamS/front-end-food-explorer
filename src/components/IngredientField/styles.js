@@ -14,8 +14,9 @@ export const IncredientsWrapper = styled.div`
   gap: 1.5rem;
   border-radius: 0.5rem;
   padding: 1.2rem 1.4rem;
-  border: 1px solid;
-  ${({ theme, error }) => (error ? theme.COLORS.RED700 : theme.COLORS.WHITE)};
+  border: 1px solid
+    ${({ theme, error, borderError }) =>
+      error && borderError ? theme.COLORS.RED700 : theme.COLORS.WHITE};
 
   > div {
     width: auto;
@@ -31,6 +32,7 @@ export const IncredientsWrapper = styled.div`
       padding: 0 1.4rem;
       border-radius: 0.5rem;
       background-color: transparent;
+      text-transform: capitalize;
       border: none;
       outline: none;
     }
@@ -48,6 +50,7 @@ export const IncredientsWrapper = styled.div`
     align-items: center;
     padding: 0.8rem;
     border-radius: 0.5rem;
+    text-transform: capitalize;
 
     svg {
       cursor: pointer;

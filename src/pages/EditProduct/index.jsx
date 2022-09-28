@@ -35,26 +35,28 @@ export function EditProduct({ ...rest }) {
   });
 
   function handleEditProduct(data) {
-    if (ingredients.length <= 0) {
-      return toast.error("Selecione os ingredientes");
-    }
-    if (newIngredient) {
-      const confirmUser = confirm(
-        "Existe um ingrediente que ainda não foi adicionado deseja continuar mesmo assim ?"
-      );
-
-      if (!confirmUser) {
-        return;
-      }
-    }
-    data.ingredients = ingredients;
-    data.price = data.price.toFixed(2);
-
     console.log(data);
+
+    if (newIngredient) {
+      return toast.warning(
+        "Existe um ingrediente que ainda não foi adicionado, remova-o ou adicione para continuar."
+      );
+    }
+
+    data.price = data.price.toFixed(2);
   }
 
   function handleAddImage(name) {
     setFileName(name);
+  }
+
+  function handleVerifyFields() {
+    if (ingredients.length <= 0) {
+      setValue("ingredients", null);
+      setError("ingredients", { message: "Selecione algum ingrediente." });
+    } else {
+      clearErrors(["ingredients"]);
+    }
   }
 
   useEffect(() => {
@@ -125,6 +127,13 @@ export function EditProduct({ ...rest }) {
                 ingredients={ingredients}
                 newIngredient={newIngredient}
                 setNewIngredient={setNewIngredient}
+                setValue={setValue}
+                getValues={getValues}
+                setError={setError}
+                clearErrors={clearErrors}
+                error={errors.ingredients}
+                borderError={true}
+                name="ingredients"
               />
               <Textarea
                 label="Descrição"
@@ -136,7 +145,7 @@ export function EditProduct({ ...rest }) {
               />
             </div>
           </FieldsWapper>
-          <Button name="Salvar edição" />
+          <Button name="Salvar edição" onClick={handleVerifyFields} />
         </Form>
       </Section>
     </Container>

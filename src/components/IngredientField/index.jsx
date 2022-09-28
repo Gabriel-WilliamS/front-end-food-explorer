@@ -1,5 +1,6 @@
 import { Container, IncredientsWrapper } from "./styles";
 import { AiOutlineCloseCircle } from "react-icons/ai";
+import { toast } from "react-toastify";
 
 export function IngredientField({
   id,
@@ -8,31 +9,76 @@ export function IngredientField({
   ingredients,
   newIngredient,
   setNewIngredient,
+  setValue,
+  getValues,
+  setError,
+  clearErrors,
+  name,
+  borderError = false,
+  error,
   ...rest
 }) {
-  function handleNewIngredient() {
+  async function handleNewIngredient() {
     if (!newIngredient) {
       return;
     }
+
+    if (ingredients.length > 0) {
+      const newIngredientAlreadyExists = ingredients.find(
+        (ingredient) => ingredient === newIngredient
+      );
+
+      if (newIngredientAlreadyExists) {
+        return toast.warning("Esse ingrediente já está na lista!");
+      }
+    }
     setIngredients((oldIngredients) => [...oldIngredients, newIngredient]);
+
+    let items = [newIngredient];
+
+    if (getValues(name)) {
+      items = await getValues(name);
+      items = [...items, newIngredient];
+    } else {
+      items = [newIngredient];
+    }
+
+    setValue(name, items, {
+      shouldValidate: true
+    });
+
+    clearErrors([name]);
     setNewIngredient("");
   }
 
   function handleRemoveIngredient(item) {
+    console.log(item);
     setIngredients((oldIngredients) =>
-      oldIngredients.filter((ingredient, index) => index != item)
+      oldIngredients.filter((ingredient) => ingredient != item)
     );
+
+    let items = getValues(name);
+
+    items = items.filter((ingredient) => ingredient != item);
+
+    setValue(name, items, {
+      shouldValidate: true
+    });
+
+    if (ingredients.length == 1) {
+      setError("ingredients", { message: "Selecione algum ingrediente." });
+    }
   }
   return (
     <Container {...rest}>
       <label htmlFor={id}>{label}</label>
-      <IncredientsWrapper>
+      <IncredientsWrapper error={error} borderError={borderError}>
         {ingredients &&
           ingredients.map((ingredient, index) => (
             <span key={index}>
               {ingredient}
               <AiOutlineCloseCircle
-                onClick={() => handleRemoveIngredient(index)}
+                onClick={() => handleRemoveIngredient(ingredient)}
               />
             </span>
           ))}
@@ -43,7 +89,7 @@ export function IngredientField({
             // type="text"
             list="ingredients"
             placeholder="Adicione um ingrediente"
-            onChange={(e) => setNewIngredient(e.target.value)}
+            onChange={(e) => setNewIngredient(e.target.value.toLowerCase())}
             value={newIngredient}
             onKeyPress={(e) => {
               if (e.key == "Enter") {

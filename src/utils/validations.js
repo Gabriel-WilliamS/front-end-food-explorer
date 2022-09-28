@@ -31,7 +31,7 @@ export const createUserAndAdmin = yup.object().shape({
 export const productFields = yup.object().shape({
   file: yup.mixed().required("File is required"),
   name: yup.string().trim().required(),
-  // ingredient: yup.string().trim().required(),
+  ingredients: yup.array().min(0).required(),
   price: yup.number().required(),
   category: yup.number().typeError("Escolha uma categoria!").required(),
   description: yup.string().trim().required()
