@@ -35,8 +35,6 @@ export function EditProduct({ ...rest }) {
   });
 
   function handleEditProduct(data) {
-    console.log(data);
-
     if (newIngredient) {
       return toast.warning(
         "Existe um ingrediente que ainda não foi adicionado, remova-o ou adicione para continuar."
