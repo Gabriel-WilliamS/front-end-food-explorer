@@ -1,6 +1,13 @@
 import { Container } from "./styles";
 
-export function RowTableOrderHistory({ status, code, details, date, ...rest }) {
+export function RowTableOrderHistory({
+  status,
+  code,
+  details,
+  date,
+  ...rest
+}) {
+  console.log(status);
   return (
     <Container status={status}>
       <td>

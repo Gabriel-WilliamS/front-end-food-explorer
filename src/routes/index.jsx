@@ -10,15 +10,7 @@ export function Routes() {
 
   return (
     <BrowserRouter>
-      {user ? (
-        user.is_admin ? (
-          <AdminRoutes />
-        ) : (
-          <ClientRoutes />
-        )
-      ) : (
-        <AuthRoutes />
-      )}
+      {user ? user.is_admin ? <AdminRoutes /> : <ClientRoutes /> : <AuthRoutes />}
     </BrowserRouter>
   );
 }

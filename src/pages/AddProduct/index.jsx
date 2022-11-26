@@ -15,6 +15,7 @@ import { Container, FieldsWapper, Form } from "./styles";
 import { useEffect, useState } from "react";
 import { toast } from "react-toastify";
 import { api } from "../../services/api";
+import { useNavigate } from "react-router-dom";
 
 export function AddProduct({ ...rest }) {
   const [fileName, setFileName] = useState("");
@@ -33,7 +34,9 @@ export function AddProduct({ ...rest }) {
     resolver: yupResolver(productFields)
   });
 
-  function handleLogin(data) {
+  const navigate = useNavigate();
+
+  async function handleCreateProduct(data) {
     if (newIngredient) {
       return toast.warning(
         "Existe um ingrediente que ainda não foi adicionado, remova-o ou adicione para continuar."
@@ -41,6 +44,27 @@ export function AddProduct({ ...rest }) {
     }
 
     data.price = data.price.toFixed(2);
+    console.log(data);
+
+    const fileUploadForm = new FormData();
+    fileUploadForm.append("name", data.name);
+    fileUploadForm.append("description", data.description);
+    fileUploadForm.append("price", data.price);
+    fileUploadForm.append("ingredients", data.ingredients);
+    fileUploadForm.append("image", data.file);
+    fileUploadForm.append("category", data.category);
+
+    try {
+      await api.post("/foods", fileUploadForm);
+      toast.success("Produto cadastrado com sucesso!");
+      navigate("/products");
+    } catch (error) {
+      if (error.response.data.message) {
+        toast.error(error.response.data.message);
+      } else {
+        toast.error("Erro ao criar categoria.");
+      }
+    }
   }
 
   function handleAddImage(name) {
@@ -71,7 +95,7 @@ export function AddProduct({ ...rest }) {
         <BackButton />
         <Section title={"Cadastrar produto"}>
           <Form
-            onSubmit={handleSubmit(handleLogin)}
+            onSubmit={handleSubmit(handleCreateProduct)}
             onKeyPress={(e) => {
               if (e.key == "Enter") {
                 e.preventDefault();

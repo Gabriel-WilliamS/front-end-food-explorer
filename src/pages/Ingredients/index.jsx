@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { Button, RowTableIngredients, Section } from "../../components";
+import { Button, RowTableIngredients } from "../../components";
+import { api } from "../../services/api";
 import { Container, Table, TitlePage } from "./styles";
 
 export function Ingredients({ ...rest }) {
@@ -17,6 +18,13 @@ export function Ingredients({ ...rest }) {
   function handleNavigateToNewIngredients() {
     navigate("new");
   }
+
+  useEffect(() => {
+    const fetchUsers = async () => {
+      await api.get("/users");
+    };
+    fetchUsers();
+  }, []);
   return (
     <Container {...rest}>
       <TitlePage>

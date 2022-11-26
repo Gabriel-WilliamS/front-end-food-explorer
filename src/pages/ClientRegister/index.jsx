@@ -1,12 +1,12 @@
+import { yupResolver } from "@hookform/resolvers/yup";
+import { useForm } from "react-hook-form";
+import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 import logo from "../../assets/svg/logo.svg";
 import { Button, InputLabel } from "../../components";
-import { Container } from "./styles";
-import { useForm } from "react-hook-form";
-import { yupResolver } from "@hookform/resolvers/yup";
-import { createUserAndAdmin } from "../../utils/validations";
-import { useNavigate } from "react-router-dom";
 import { api } from "../../services/api";
-import { toast } from "react-toastify";
+import { createUserAndAdmin } from "../../utils/validations";
+import { Container } from "./styles";
 export function ClientRegister() {
   const navigate = useNavigate();
 
@@ -18,14 +18,17 @@ export function ClientRegister() {
     resolver: yupResolver(createUserAndAdmin)
   });
 
-  function handleLogin(data) {
+  async function handleLogin(data) {
     try {
-      api.post("/user-register", {
+      const response = await api.post("/user-register", {
         name: data.name,
         email: data.email,
         password: data.password
       });
-      toast.success("Conta criada com sucesso!");
+
+      toast.success(
+        `Conta criada com sucesso! Bem vindo ${response.data.name}`
+      );
       navigate("/");
     } catch (error) {
       toast.error("Error ao criar a conta.");

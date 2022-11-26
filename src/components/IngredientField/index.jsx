@@ -18,6 +18,7 @@ export function IngredientField({
   error,
   ...rest
 }) {
+  const ingredientsTeste = ["ovo", "alface", "carne"];
   async function handleNewIngredient() {
     if (!newIngredient) {
       return;
@@ -98,9 +99,10 @@ export function IngredientField({
           />
 
           <datalist id="ingredients">
-            <option value="ovo" />
-            <option value="alface" />
-            <option value="frango" />
+            {ingredientsTeste &&
+              ingredientsTeste.map((ingredient) => (
+                <option value={ingredient} />
+              ))}
           </datalist>
         </div>
       </IncredientsWrapper>

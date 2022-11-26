@@ -17,10 +17,12 @@ export const Container = styled.tr`
           height: 0.9rem;
           border-radius: 50%;
 
-          ${({ status }) => status === "Pendente" && "background-color: red"}
+          ${({ status }) =>
+            status === "Pendente" && "background-color: red"}
           ${({ status }) =>
             status === "Preparando" && "background-color: orange"}
-          ${({ status }) => status === "Entrege" && "background-color: green"}
+          ${({ status }) =>
+            status === "Entregue" && "background-color: green"}
         }
       }
     }

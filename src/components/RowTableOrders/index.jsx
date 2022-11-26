@@ -12,6 +12,7 @@ export function RowTableOrders({ status, code, details, date, ...rest }) {
           name="status"
           onChange={(e) => handleChangeStatus(e.target.value, code)}
           defaultValue={status}
+          status="Entregue"
         >
           <option value="Pendente">Pendente</option>
           <option value="Preparando">Preparando</option>

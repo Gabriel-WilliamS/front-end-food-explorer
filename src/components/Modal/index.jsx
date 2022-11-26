@@ -12,6 +12,8 @@ export function Modal({
   const modalRef = useRef();
 
   const closeModal = (e) => {
+    console.log(modalRef.current);
+    console.log(e.target);
     if (modalRef.current === e.target) {
       setOpenModal(false);
     }

@@ -6,11 +6,7 @@ import plus from "../../assets/svg/plus.svg";
 import { useNavigate } from "react-router-dom";
 
 import { Button } from "../../components";
-export function ProductCardSlider({
-  product,
-  onAddProductOnCart,
-  onAddProductFavorite
-}) {
+export function ProductCardSlider({ product, onAddProductOnCart, onAddProductFavorite }) {
   const [productsLike, setProductsLike] = useState(false);
   const [theAmount, setTheAmount] = useState(1);
 
@@ -35,10 +31,7 @@ export function ProductCardSlider({
   return (
     <>
       {productsLike ? (
-        <BsHeartFill
-          className="heart-icon like"
-          onClick={handleFavoriteProduct}
-        />
+        <BsHeartFill className="heart-icon like" onClick={handleFavoriteProduct} />
       ) : (
         <BsHeart className="heart-icon" onClick={handleFavoriteProduct} />
       )}
@@ -54,9 +47,7 @@ export function ProductCardSlider({
       <div>
         <div className="counter">
           <button
-            onClick={() =>
-              setTheAmount(theAmount <= 1 ? theAmount : theAmount - 1)
-            }
+            onClick={() => setTheAmount(theAmount <= 1 ? theAmount : theAmount - 1)}
           >
             <img src={minus} alt="Menos" />
           </button>
